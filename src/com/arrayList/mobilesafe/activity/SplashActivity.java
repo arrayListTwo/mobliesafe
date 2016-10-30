@@ -16,6 +16,7 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
@@ -25,6 +26,8 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -104,6 +107,16 @@ public class SplashActivity extends Activity {
 	 */
 	private static final int INSTALL_REQUEST_CODE = 5;
 	
+	/**
+	 * SharedPreferences设置中心的配置文件
+	 */
+	private SharedPreferences mPref;
+	
+	/**
+	 * 根布局
+	 */
+	private RelativeLayout rlRoot;
+	
 	private Handler mHandler = new Handler(){
 		
 		@Override
@@ -135,7 +148,7 @@ public class SplashActivity extends Activity {
 		}
 		
 	};
-	
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -143,8 +156,23 @@ public class SplashActivity extends Activity {
         tvVersion = (TextView) findViewById(R.id.tv_version);
         tvVersion.setText("版本号：" + getVersionName());
         tvProgress = (TextView) findViewById(R.id.tv_progress); //默认隐藏
-        //检查软件最新的版本号
-        checkVersion();
+        
+        rlRoot = (RelativeLayout) findViewById(R.id.rl_root);
+        
+        mPref = getSharedPreferences("config", MODE_PRIVATE);
+        //判断是否自动更新
+        boolean autoUpdate = mPref.getBoolean("auto_update", true);
+        if (autoUpdate) {
+        	//检查软件最新的版本号
+        	checkVersion();
+		}else {
+			//延时两秒后发送消息
+			mHandler.sendEmptyMessageDelayed(CODE_ENTER_HOME, 2000);
+		}
+        //渐变的动画效果
+        AlphaAnimation animation = new AlphaAnimation(0.3f, 1f);
+        animation.setDuration(2000);
+        rlRoot.startAnimation(animation);
     }
     
     /**
@@ -198,7 +226,7 @@ public class SplashActivity extends Activity {
         			/*
         			 * 本机地址用localhost，但是如果用模拟器加载本机的IP地址时，可以用IP（10.0.2.2）来替换 
         			 */
-    				URL url = new URL("http://192.168.1.103:8080/update.json");
+    				URL url = new URL("http://192.168.1.100:8080/update.json");
         			openConnection = (HttpURLConnection) url.openConnection();
         			openConnection.setRequestMethod("GET"); //设置请求方法
         			openConnection.setConnectTimeout(5000); //设置连接超时

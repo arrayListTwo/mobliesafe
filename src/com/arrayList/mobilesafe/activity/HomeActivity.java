@@ -1,10 +1,12 @@
 package com.arrayList.mobilesafe.activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
@@ -45,12 +47,28 @@ public class HomeActivity extends Activity {
 		gvHome = (GridView) findViewById(R.id.gv_home);
 		//设置GridView的适配器
 		gvHome.setAdapter(new HomeAdapter());
+		//GridView子组件设置点击事件
+		gvHome.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position,
+					long id) {
+				switch (position) {
+				case 8:
+					//设置中心
+					startActivity(new Intent(HomeActivity.this, SettingActivity.class));
+					break;
+
+				default:
+					break;
+				}
+			}
+		});
 	}
 	
 	/**
 	 * GridView的适配器类
 	 * @author arrayList
-	 *
 	 */
 	class HomeAdapter extends BaseAdapter{
 

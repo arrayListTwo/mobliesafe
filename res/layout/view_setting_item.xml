@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="70dp"
+    android:padding="5dp"
+    >
+    <TextView 
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="22sp"
+        />
+    <!-- android:textColor="#a000" 前面加了一个字母 a 表示透明度 -->
+   <TextView 
+       android:id="@+id/tv_desc"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_marginTop="3dp"
+       android:layout_below="@id/tv_title"
+       android:textColor="#a000"
+       android:textSize="18sp"
+       />
+   <!-- 设置垂直居中：
+   			android:layout_centerVertical="true"
+   		设置CheckBox组件获取不到组件，不可点击：
+   			android:clickable="false"
+         	android:focusable="false"
+         	android:focusableInTouchMode="false"	
+   			 -->
+     <CheckBox 
+         android:id="@+id/status"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:clickable="false"
+         android:focusable="false"
+         android:focusableInTouchMode="false"
+         android:layout_alignParentRight="true"
+         android:layout_centerVertical="true"
+         />
+     <View 
+         android:layout_width="match_parent"
+         android:layout_height="0.2dp"
+         android:layout_marginTop="3dp"
+		 android:layout_alignParentBottom="true"
+         android:background="#a000"
+         />
+ </RelativeLayout>

@@ -4,8 +4,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-import android.R.array;
-
 /**
  * 读取流的工具
  * @author lei
