@@ -26,6 +26,8 @@
         </activity>
         <activity android:label="@string/app_name" android:name="com.arrayList.mobilesafe.activity.HomeActivity"></activity>
         <activity android:label="@string/app_name" android:name="com.arrayList.mobilesafe.activity.SettingActivity"></activity>
+        <activity android:label="@string/app_name" android:name="com.arrayList.mobilesafe.activity.LostFindActivity"></activity>
+        <activity android:label="@string/app_name" android:name="com.arrayList.mobilesafe.activity.SetupOneActivity"></activity>
     </application>
 
 </manifest>

@@ -20,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.arrayList.mobilesafe.R;
+import com.arrayList.mobilesafe.utils.MD5Utils;
 
 /**
  * 安全卫士软件展示九大功能的主界面
@@ -114,9 +115,12 @@ public class HomeActivity extends Activity {
 				String password = etPassword.getText().toString();
 				if (!TextUtils.isEmpty(password)) {
 					String savePassword = mPref.getString("password", null);
-					if (password.equals(savePassword)) {
-						Toast.makeText(HomeActivity.this, "登陆成功", Toast.LENGTH_SHORT).show();
+					if ((MD5Utils.encode(password)).equals(savePassword)) {
+//						Toast.makeText(HomeActivity.this, "登陆成功", Toast.LENGTH_SHORT).show();
+						//关闭弹窗
 						alertDialog.dismiss();
+						//跳转到手机防盗页面
+						startActivity(new Intent(HomeActivity.this, LostFindActivity.class));
 					}else {
 						Toast.makeText(HomeActivity.this, "密码错误", Toast.LENGTH_SHORT).show();
 					}
@@ -156,10 +160,11 @@ public class HomeActivity extends Activity {
 				String passwordConfirm = etPasswordConfrim.getText().toString();
 				if (!TextUtils.isEmpty(password) && !TextUtils.isEmpty(passwordConfirm)) {
 					if (password.equals(passwordConfirm)) {
-						Toast.makeText(HomeActivity.this, "登陆成功", Toast.LENGTH_SHORT).show();
-						//将密码保存至SharedPreferences对象中
-						mPref.edit().putString("password", password).commit();
+//						Toast.makeText(HomeActivity.this, "登陆成功", Toast.LENGTH_SHORT).show();
+						//将经过MD5加密的密码保存至SharedPreferences对象中
+						mPref.edit().putString("password", MD5Utils.encode(password)).commit();
 						alertDialog.dismiss();
+						startActivity(new Intent(HomeActivity.this, LostFindActivity.class));
 					}else {
 						Toast.makeText(HomeActivity.this, "两次密码不一致", Toast.LENGTH_SHORT).show();
 					}
