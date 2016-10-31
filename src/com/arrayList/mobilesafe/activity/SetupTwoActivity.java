@@ -8,16 +8,16 @@ import android.view.View;
 import com.arrayList.mobilesafe.R;
 
 /**
- * 第一个设置向导页
- * @author lei
+ * 第二个设置向导也
+ * @author arrayList
  *
  */
-public class SetupOneActivity extends Activity {
-	
+public class SetupTwoActivity extends Activity {
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_setup_one);
+		setContentView(R.layout.activity_setup_two);
 	}
 	
 	/**
@@ -25,8 +25,17 @@ public class SetupOneActivity extends Activity {
 	 * @param v view对象
 	 */
 	public void next(View v){
-		startActivity(new Intent(this, SetupTwoActivity.class));
+		startActivity(new Intent(this, SetupThreeActivity.class));
 		finish();
 	}
 	
+	/**
+	 * 跳转到下一个界面
+	 * @param v view对象
+	 */
+	public void previous(View v){
+		startActivity(new Intent(this, SetupOneActivity.class));
+		finish();
+	}
+		
 }
