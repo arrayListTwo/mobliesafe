@@ -27,6 +27,8 @@ public class SetupOneActivity extends Activity {
 	public void next(View v){
 		startActivity(new Intent(this, SetupTwoActivity.class));
 		finish();
+		//两个界面切换的动画
+		overridePendingTransition(R.anim.tran_in, R.anim.tran_out); //进入动画和退出动画
 	}
 	
 }

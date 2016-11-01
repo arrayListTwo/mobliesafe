@@ -1,11 +1,12 @@
 package com.arrayList.mobilesafe.activity;
 
-import com.arrayList.mobilesafe.R;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
+
+import com.arrayList.mobilesafe.R;
 
 /**
  * 手机防盗界面
@@ -29,7 +30,15 @@ public class LostFindActivity extends Activity {
 			startActivity(new Intent(this, SetupOneActivity.class));
 			finish();
 		}
-		
+	}
+
+	/**
+	 * 点击进入重新设置向导
+	 * @param v view对象
+	 */
+	public void reEnter(View v){
+		startActivity(new Intent(this, SetupOneActivity.class));
+		finish();
 	}
 	
 }

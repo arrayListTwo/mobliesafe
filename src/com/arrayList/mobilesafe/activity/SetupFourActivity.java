@@ -33,6 +33,8 @@ public class SetupFourActivity extends Activity {
 		finish();
 		//更改配置文件
 		mPref.edit().putBoolean("configed", true).commit();
+		//两个界面切换的动画
+		overridePendingTransition(R.anim.tran_in, R.anim.tran_out); //进入动画和退出动画
 	}
 	
 	/**
@@ -42,6 +44,8 @@ public class SetupFourActivity extends Activity {
 	public void previous(View v){
 		startActivity(new Intent(this, SetupOneActivity.class));
 		finish();
+		//两个界面切换的动画
+		overridePendingTransition(R.anim.tran_previous_in, R.anim.tran_previous_out); //进入动画和退出动画
 	}
 		
 }

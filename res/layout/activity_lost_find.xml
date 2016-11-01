@@ -19,15 +19,17 @@
         <TextView 
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
+            android:layout_alignParentEnd="true" 
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:textColor="@color/black"
             android:textSize="16sp"
+            android:layout_marginEnd="5dp" 
             android:layout_marginRight="5dp"
             android:text="1385621546"
             />
     </RelativeLayout>
-    <ImageView 
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -45,18 +47,83 @@
         <ImageView
             android:layout_height="20dp"
             android:layout_width="20dp"
+            android:layout_alignParentEnd="true" 
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
+            android:layout_marginEnd="5dp" 
             android:layout_marginRight="5dp"
             android:src="@drawable/lock"
             />
     </RelativeLayout>
-    <ImageView 
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="5dp"
         android:background="@drawable/listview_divider"
         />
-
+    
+    <!-- 设置TextView控件可点击并设置点击事件 -->
+    <TextView 
+        style="@style/ContentStyle"
+        android:layout_width="match_parent"
+        android:onClick="reEnter"
+        android:clickable="true"
+        android:background="@drawable/shape_selector"
+        android:text="重新进入设置向导"
+        />
+    
+        <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="5dp"
+        android:background="@drawable/listview_divider"
+        />
+        
+        <TextView 
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="功能简介"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
+            android:padding="3dp"
+            android:background="#5000"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            />
+        
+     <TextView 
+        style="@style/ContentStyle"
+        android:gravity="center"
+        android:drawableStart="@android:drawable/star_big_on"
+        android:drawableLeft="@android:drawable/star_big_on"
+        android:text="GPS追踪：#*location*#"
+        />
+    
+    <TextView 
+        style="@style/ContentStyle"
+        android:gravity="center"
+        android:drawableStart="@android:drawable/star_big_on"
+        android:drawableLeft="@android:drawable/star_big_on"
+        android:text="播放报警音乐：#*alarm*#"
+        />
+    
+    <TextView 
+        style="@style/ContentStyle"
+        android:gravity="center"
+        android:drawableStart="@android:drawable/star_big_on"
+        android:drawableLeft="@android:drawable/star_big_on"
+        android:text="远程删除数据：#*wipedata*#"
+        />
+    
+    <TextView 
+        style="@style/ContentStyle"
+        android:gravity="center"
+        android:drawableStart="@android:drawable/star_big_on"
+        android:drawableLeft="@android:drawable/star_big_on"
+        android:text="远程锁屏：#*lockscreen*#"
+        />
+            
 </LinearLayout>
